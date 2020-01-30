@@ -6,4 +6,6 @@
 ```
 npx create-react-app news-website
 cnpm install antd --save
+cnpm install axios --save
+cnpm install react-router-dom --save
 ```

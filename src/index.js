@@ -1,24 +1,37 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import 'antd/dist/antd.css';
-import './style.css';
-import { Layout } from 'antd';
-import AppHeader from './components/Header/';
+import React, { Component } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import ReactDOM from "react-dom";
+import "antd/dist/antd.css";
+import "./style.css";
+import { Layout } from "antd";
+import AppHeader from "./components/Header/";
+import List from "./containers/List/";
+import Detail from "./containers/Detail/";
 
 const { Header, Footer, Content } = Layout;
 
 class App extends Component {
     render() {
         return (
-            <Layout style={{minWidth:1600}}>
-                <Header className="header">
-                    <AppHeader></AppHeader>
-                </Header>
-                <Content className="content">Content</Content>
-                <Footer className="footer">Footer</Footer>
-            </Layout>
-        )
+            <BrowserRouter>
+                <Layout style={{ minWidth: 1240, height: '100%' }}>
+                    <Header className="header">
+                        <AppHeader></AppHeader>
+                    </Header>
+                    <Content className="content">
+
+                        {/* Switch是只匹配一个，匹配到就返回 */}
+                        <Switch>
+                            <Route path="/detail/:id" component={Detail}></Route>
+                            <Route path="/:id?" component={List}></Route>
+                        </Switch>
+
+                    </Content>
+                    <Footer className="footer">@copyright Carol 2020</Footer>
+                </Layout>
+            </BrowserRouter >
+        );
     }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
