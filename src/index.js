@@ -7,6 +7,9 @@ import { Layout } from "antd";
 import AppHeader from "./components/Header/";
 import List from "./containers/List/";
 import Detail from "./containers/Detail/";
+import Login from './components/Login';
+import Vip from './components/Vip';
+
 
 const { Header, Footer, Content } = Layout;
 
@@ -19,9 +22,10 @@ class App extends Component {
                         <AppHeader></AppHeader>
                     </Header>
                     <Content className="content">
-
+                    <Login />     
                         {/* Switch是只匹配一个，匹配到就返回 */}
                         <Switch>
+                            <Route path='/vip' component={Vip}></Route>
                             <Route path="/detail/:id" component={Detail}></Route>
                             <Route path="/:id?" component={List}></Route>
                         </Switch>
